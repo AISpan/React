@@ -1,0 +1,90 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  }
+ 
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button .icon {
+    margin-right: 10px;
+  }
+  
+  /* Google Button */
+  .google-button {
+    background-color: #db4437;
+    color: white;
+  }
+  
+  .google-button:hover {
+    background-color: #c33d31;
+    box-shadow: 0 4px 8px rgba(219, 68, 55, 0.3);
+  }
+  
+  /* Facebook Button */
+  .facebook-button {
+    background-color: #4267b2;
+    color: white;
+  }
+  
+  .facebook-button:hover {
+    background-color: #365899;
+    box-shadow: 0 4px 8px rgba(66, 103, 178, 0.3);
+  }
+  
+  /* GitHub Button */
+  .github-button {
+    background-color: #333;
+    color: white;
+  }
+  
+  .github-button:hover {
+    background-color: #222;
+    box-shadow: 0 4px 8px rgba(51, 51, 51, 0.3);
+  }
+  
+  /* LinkedIn Button */
+  .linkedin-button {
+    background-color: #0077b5;
+    color: white;
+  }
+  
+  .linkedin-button:hover {
+    background-color: #005c93;
+    box-shadow: 0 4px 8px rgba(0, 119, 181, 0.3);
+  }
+  
+  button:hover{
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
