@@ -1,70 +1,72 @@
 import React, { useState } from 'react';
-import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { handleSocialLogin } from '@/services/authService';
+import { loginWithFacebook, fetchUserInfo } from '@/services/authService';
+import UserProfile from './UserProfile';
 
 const SocialLoginButtons = () => {
-  const [user, setUser] = useState(null); // Track user state
+  const [user, setUser] = useState(null);
 
-  // Mock function to fetch user data (can be replaced with real API calls)
-  const fetchGoogleUserData = (response) => {
-    const userData = {
-      name: response.profileObj?.name || 'User',
-      email: response.profileObj?.email || 'user@example.com',
-      picture: response.profileObj?.imageUrl || '',
-    };
-    setUser(userData);
+  const handleGoogleLogin = async (response) => {
+    try {
+      const userInfo = await fetchUserInfo('google', response.credential);
+      setUser(userInfo);
+    } catch (error) {
+      
+      console.error('Google login failed:', error);
+    }
+  };
+
+  const handleFacebookLogin = async () => {
+    try {
+      const fbResponse = await loginWithFacebook();
+      const userInfo = await fetchUserInfo('facebook', fbResponse.accessToken);
+      setUser(userInfo);
+    } catch (error) {
+      console.error('Facebook login failed:', error);
+    }
+  };
+
+  const handleLinkedInLogin = () => {
+    const linkedInAuthUrl = providersConfig.linkedin.authUrl;
+    window.location.href = linkedInAuthUrl;
+  };
+
+  const handleGitHubLogin = () => {
+    const gitHubAuthUrl = providersConfig.github.authUrl;
+    window.location.href = gitHubAuthUrl;
   };
 
   const handleLogout = () => {
     setUser(null);
-    googleLogout(); // Specific to Google; add logout logic for other providers
   };
 
   return (
     <div className="container">
       {!user ? (
         <>
-          {/* Google Login */}
           <GoogleLogin
-            onSuccess={(response) => fetchGoogleUserData(response)}
+            onSuccess={handleGoogleLogin}
             onError={() => console.error('Google login failed')}
             render={(renderProps) => (
-              <button className="google-button" onClick={renderProps.onClick}>
-                <FontAwesomeIcon icon={faGoogle} className="icon" />
-                Login with Google
+              <button className="google-button login-button" onClick={renderProps.onClick}>
+                <FontAwesomeIcon icon={faGoogle} className="icon" /> Login with Google
               </button>
             )}
           />
-
-          {/* Facebook Login */}
-          <button className="facebook-button" onClick={() => handleSocialLogin('facebook')}>
-            <FontAwesomeIcon icon={faFacebook} className="icon" />
-            Login with Facebook
+          <button className="facebook-button login-button" onClick={handleFacebookLogin}>
+            <FontAwesomeIcon icon={faFacebook} className="icon" /> Login with Facebook
           </button>
-
-          {/* GitHub Login */}
-          <button className="github-button" onClick={() => handleSocialLogin('github')}>
-            <FontAwesomeIcon icon={faGithub} className="icon" />
-            Login with GitHub
+          <button className="linkedin-button login-button" onClick={handleLinkedInLogin}>
+            <FontAwesomeIcon icon={faLinkedin} className="icon" /> Login with LinkedIn
           </button>
-
-          {/* LinkedIn Login */}
-          <button className="linkedin-button" onClick={() => handleSocialLogin('linkedin')}>
-            <FontAwesomeIcon icon={faLinkedin} className="icon" />
-            Login with LinkedIn
+          <button className="github-button login-button" onClick={handleGitHubLogin}>
+            <FontAwesomeIcon icon={faGithub} className="icon" /> Login with GitHub
           </button>
         </>
       ) : (
-        <div className="user-info">
-          <img src={user.picture || 'https://via.placeholder.com/150'} alt="User Avatar" className="user-avatar" />
-          <h2 className="user-name">{user.name}</h2>
-          <p className="user-email">{user.email}</p>
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
+        <UserProfile user={user} onLogout={handleLogout} />
       )}
     </div>
   );

@@ -1,90 +1,119 @@
 /* Global Styles */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 300px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.2s ease-in-out;
-  }
- 
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 15px;
-    margin: 20px 0;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  button .icon {
-    margin-right: 10px;
-  }
-  
-  /* Google Button */
-  .google-button {
-    background-color: #db4437;
-    color: white;
-  }
-  
-  .google-button:hover {
-    background-color: #c33d31;
-    box-shadow: 0 4px 8px rgba(219, 68, 55, 0.3);
-  }
-  
-  /* Facebook Button */
-  .facebook-button {
-    background-color: #4267b2;
-    color: white;
-  }
-  
-  .facebook-button:hover {
-    background-color: #365899;
-    box-shadow: 0 4px 8px rgba(66, 103, 178, 0.3);
-  }
-  
-  /* GitHub Button */
-  .github-button {
-    background-color: #333;
-    color: white;
-  }
-  
-  .github-button:hover {
-    background-color: #222;
-    box-shadow: 0 4px 8px rgba(51, 51, 51, 0.3);
-  }
-  
-  /* LinkedIn Button */
-  .linkedin-button {
-    background-color: #0077b5;
-    color: white;
-  }
-  
-  .linkedin-button:hover {
-    background-color: #005c93;
-    box-shadow: 0 4px 8px rgba(0, 119, 181, 0.3);
-  }
-  
-  button:hover{
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Login Button Styles */
+.login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-button .icon {
+  margin-right: 10px;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Branding Colors */
+.google-button {
+  background-color: #db4437;
+  color: white;
+}
+
+.google-button:hover {
+  background-color: #c33d2e;
+}
+
+.facebook-button {
+  background-color: #4267b2;
+  color: white;
+}
+
+.facebook-button:hover {
+  background-color: #365899;
+}
+
+.github-button {
+  background-color: #333;
+  color: white;
+}
+
+.github-button:hover {
+  background-color: #000;
+}
+
+.linkedin-button {
+  background-color: #0077b5;
+  color: white;
+}
+
+.linkedin-button:hover {
+  background-color: #005f8d;
+}
+
+/* Avatar and Profile Info */
+.user-profile {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-name {
+  font-size: 18px;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.logout-button {
+  background-color: #db4437;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c33d2e;
+}
